@@ -1,15 +1,28 @@
 {
-	"users": [
-		{
-			"email": "member@member.com",
-			"password": "password",
-			"role": "ADMIN",
-			"verified": false,
-			"avatar": "http",
-			"createdAt": 1571213104370,
-			"id": "Z2hlvDmLOSRZGebC_Z_aA"
-		}
-	],
-	"posts": [],
-	"settings": []
+  "users": [
+    {
+      "email": "member@member.com",
+      "password": "password",
+      "role": "ADMIN",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1571213104370,
+      "id": "Z2hlvDmLOSRZGebC_Z_aA"
+    }
+  ],
+  "posts": [
+    {
+      "message": "this is a post",
+      "author": "Z2hlvDmLOSRZGebC_Z_aA",
+      "createdAt": 1587564652234,
+      "id": "HXe1U0OyOb4rh8bZIPt0E"
+    },
+    {
+      "message": "wooo",
+      "author": "Z2hlvDmLOSRZGebC_Z_aA",
+      "createdAt": 1587564659892,
+      "id": "x-0ypy3ZvW_5LWQnqNveF"
+    }
+  ],
+  "settings": []
 }
