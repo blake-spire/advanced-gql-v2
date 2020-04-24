@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
-const { models } = require("./db");
 const secret = "catpack";
+const { AuthenticationError, ForbiddenError } = require("apollo-server");
+
+const { models } = require("./db");
 
 /**
  * takes a user object and creates jwt out of it
@@ -30,7 +32,7 @@ const getUserFromToken = token => {
  * @param {Function} next next resolver function ro run
  */
 const authenticated = next => (root, args, context, info) => {
-  if (!context.user) throw new Error("Not Authenticated");
+  if (!context.user) throw new AuthenticationError("Not Authenticated");
 
   return next(root, args, context, info);
 };
@@ -45,7 +47,7 @@ const authorized = (role, next) => (root, args, context, info) => {
   console.log(role, context.user);
 
   if (context.user.role !== role)
-    throw new Error(`Not Authorized: must be '${role}'`);
+    throw new ForbiddenError(`Not Authorized: must be '${role}'`);
 
   return next(root, args, context, info);
 };
