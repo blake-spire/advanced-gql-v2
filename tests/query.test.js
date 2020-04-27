@@ -1,4 +1,5 @@
 const gql = require("graphql-tag");
+
 const createTestServer = require("./helper");
 const FEED = gql`
   {
