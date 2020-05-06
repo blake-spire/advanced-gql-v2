@@ -8,8 +8,9 @@ const typeDefs = gql`
   type User {
     id: ID!
     username: String!
-    createdAt: Int!
+    createdAt: String
     error: String
+      @deprecated(reason: "this text will show in the graphql playground")
   }
 
   type Settings {
@@ -44,7 +45,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     me() {
-      return { id: "1234", username: "blake", createAt: Date.now() };
+      return { id: "1234", username: "blake", createdAt: Date.now() + "" };
     },
 
     settings(_rootVal, args) {
@@ -57,7 +58,10 @@ const resolvers = {
   },
 
   User: {
-    // example of throwing an apollo-server created error
+    /**
+     * example of throwing an apollo-server created error
+     * @deprecated
+     * */
     error() {
       return "";
       // return new AuthenticationError("Not authorized!");
@@ -90,7 +94,7 @@ const resolvers = {
       return {
         id: "1234",
         username: "blake",
-        createAt: Date.now(),
+        createdAt: Date.now() + "",
       };
     },
   },
@@ -118,4 +122,4 @@ const server = new ApolloServer({
   },
 });
 
-server.listen().then(res => console.log(`listening on ${res.url}`));
+server.listen().then((res) => console.log(`listening on ${res.url}`));
